@@ -1,6 +1,6 @@
 import torch
 
-torch.cuda.is_available()
-torch.cuda.device_count()
-torch.cuda.current_device()
-torch.cuda.device(0)
+print(torch.cuda.is_available())
+print(torch.cuda.device_count())
+print(torch.cuda.current_device())
+print(torch.cuda.device(0))
