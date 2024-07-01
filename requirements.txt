@@ -1,3 +1,4 @@
+git+https://github.com/unslothai/unsloth.git
 torch==1.13.1
 datasets
 transformers
@@ -7,4 +8,4 @@ accelerate
 bitsandbytes
 huggingface_hub
 xformers
-git+https://github.com/unslothai/unsloth.git
+
