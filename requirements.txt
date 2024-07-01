@@ -6,4 +6,5 @@ peft
 accelerate
 bitsandbytes
 huggingface_hub
+xformers
 unsloth @ git+https://github.com/unslothai/unsloth.git
