@@ -1,5 +1,4 @@
-torch==1.7.0 
-torchvision==0.8.1
+torch==1.7.0 torchvision==0.8.1 -f https://download.pytorch.org/whl/cu101/torch_stable.html
 datasets
 transformers
 trl<0.9.0
