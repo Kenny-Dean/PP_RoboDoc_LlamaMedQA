@@ -8,8 +8,12 @@ repo_url = "https://huggingface.co/KennyDain/Llama3_8B_bnb_RoboDoc_MedQA"
 # Wechsle in das Modellverzeichnis
 os.chdir(model_dir)
 
-# Füge den Remote-Repository hinzu, falls nicht bereits geschehen
-subprocess.run(["git", "remote", "add", "origin", repo_url], check=True)
+# Überprüfen, ob der Remote-Name 'origin' existiert
+result = subprocess.run(["git", "remote"], capture_output=True, text=True)
+if 'origin' in result.stdout:
+    subprocess.run(["git", "remote", "set-url", "origin", repo_url], check=True)
+else:
+    subprocess.run(["git", "remote", "add", "origin", repo_url], check=True)
 
 # Git LFS installieren und tracken
 subprocess.run(["git", "lfs", "install"], check=True)
