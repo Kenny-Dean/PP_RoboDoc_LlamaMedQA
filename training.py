@@ -75,8 +75,8 @@ trainer = SFTTrainer(
         per_device_train_batch_size=2,
         gradient_accumulation_steps=4,
         warmup_steps=5,
-        num_train_epochs=7,
-        learning_rate=2e-4,
+        num_train_epochs=9,
+        learning_rate=2e-5,
         fp16=not is_bfloat16_supported(),
         bf16=is_bfloat16_supported(),
         logging_steps=1,
@@ -90,8 +90,6 @@ trainer = SFTTrainer(
 
 # Training durchführen
 trainer_stats = trainer.train()
-
-hf_token = ""
 
 model.save_pretrained("Llama3_8B_bnb_4bit_RoboDoc_MedQA")
 tokenizer.save_pretrained("Llama3_8B_bnb_4bit_RoboDoc_MedQA_Tokenizer")
