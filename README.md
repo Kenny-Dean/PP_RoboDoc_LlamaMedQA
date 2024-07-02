@@ -32,5 +32,6 @@ Trainiert wurde mit CUDA 12.1, falls eine andere Version hinterlegt ist (und Cud
 Helfen folgende Commands:
 
 export PATH=/usr/local/cuda-12.1/bin${PATH:+:${PATH}}
+
 export LD_LIBRARY_PATH=/usr/local/cuda-12.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
