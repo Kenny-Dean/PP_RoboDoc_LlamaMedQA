@@ -27,6 +27,8 @@ python3.10 training.py
 
 Sonstiges:
 
+Torchversion ist die kompatible mit der CUDA 12.1 Version
+
 Trainiert wurde mit CUDA 12.1, falls eine andere Version hinterlegt ist (und Cuda 12.1 installiert aber nicht als "Hauptversion" hinterlegt ist.) 
 
 Helfen folgende Commands:
