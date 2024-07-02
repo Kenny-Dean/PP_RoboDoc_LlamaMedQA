@@ -93,5 +93,5 @@ trainer_stats = trainer.train()
 
 hf_token = ""
 
-model.save_pretrained("Llama3_8B_bnb_4bit_RoboDoc_MedQA", push_to_hub=True, use_auth_token=hf_token)
-tokenizer.save_pretrained("Llama3_8B_bnb_4bit_RoboDoc_MedQA_Tokenizer", push_to_hub=True, use_auth_token=hf_token)
+model.save_pretrained("Llama3_8B_bnb_4bit_RoboDoc_MedQA")
+tokenizer.save_pretrained("Llama3_8B_bnb_4bit_RoboDoc_MedQA_Tokenizer")
