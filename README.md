@@ -12,6 +12,9 @@ tmux new-session -d
 tmux ls
 tmux attach -t "session_id"
 
+Mit Crtl + b und d kann sich von der Session getrennt werden und das Training läuft weiter.
+
+Ein checken des Standes ist dann wieder mit tmux attach -t "session_id" möglich.
 
 (Möglicherweise erneutes gehen in das Python env)
 # Aktivieren der virtuellen Umgebung
