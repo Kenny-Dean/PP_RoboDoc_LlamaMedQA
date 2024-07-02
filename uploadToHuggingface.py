@@ -2,7 +2,7 @@ import subprocess
 import os
 
 # Definiere den Pfad zu deinem Modellverzeichnis und das Repository-URL
-model_dir = "./Llama3_8B_bnb_4bit_RoboDoc_MedQA"
+model_dir = "/home/pp/RoboDoc/PP_RoboDoc_LlamaMedQA/Llama3_8B_bnb_4bit_RoboDoc_MedQA"
 repo_url = "https://huggingface.co/KennyDain/Llama3_8B_bnb_RoboDoc_MedQA"
 
 # Wechsle in das Modellverzeichnis
@@ -17,7 +17,7 @@ else:
 
 # Git LFS installieren und tracken
 subprocess.run(["git", "lfs", "install"], check=True)
-subprocess.run(["git", "lfs", "track", "pytorch_model.bin"], check=True)
+subprocess.run(["git", "lfs", "track", "adapter_model.safetensors"], check=True)
 
 # Füge alle Dateien hinzu
 subprocess.run(["git", "add", "."], check=True)
