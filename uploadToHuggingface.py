@@ -26,4 +26,4 @@ subprocess.run(["git", "add", "."], check=True)
 subprocess.run(["git", "commit", "-m", "Upload fine-tuned model"], check=True)
 
 # Pushe die Dateien zum Hugging Face Model Hub
-subprocess.run(["git", "push", "origin", "main"], check=True)
+subprocess.run(["git", "push", "origin", "master"], check=True)
