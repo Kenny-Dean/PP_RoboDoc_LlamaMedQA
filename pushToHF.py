@@ -5,8 +5,8 @@ from transformers import PreTrainedTokenizerFast
 model_directory = "."
 
 # Ihr Hugging Face Benutzername und der Name des Modells
-hf_username = "Ihr_Hugging_Face_Benutzername"
-model_name = "mein_trainiertes_modell"
+hf_username = "KennyDain"
+model_name = "Llama3_8B_bnb_4bit_MedQA"
 
 # Erstellen des Repository-Objekts
 repo_url = HfApi().create_repo(name=model_name, token=HfFolder.get_token(), exist_ok=True)
