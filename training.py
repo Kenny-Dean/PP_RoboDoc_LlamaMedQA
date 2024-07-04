@@ -47,20 +47,31 @@ medqa_prompt = """Below is an instruction that describes a task, paired with an 
 ### Response:
 {}"""
 
-EOS_TOKEN = tokenizer.eos_token  # Must add EOS_TOKEN
+EOS_TOKEN = tokenizer.eos_token # Must add EOS_TOKEN
 def formatting_prompts_func(examples):
     instructions = examples["instruction"]
-    inputs = examples["input"]
-    outputs = examples["output"]
+    inputs       = examples["input"]
+    outputs      = examples["output"]
     texts = []
     for instruction, input, output in zip(instructions, inputs, outputs):
+        # Must add EOS_TOKEN, otherwise your generation will go on forever!
         text = medqa_prompt.format(instruction, input, output) + EOS_TOKEN
         texts.append(text)
-    return {"text": texts}
+    return { "text" : texts, }
+pass
 
-# Datensatz laden und formatieren
-dataset = load_dataset("medalpaca/medical_meadow_medqa", split="train")
-dataset = dataset.map(formatting_prompts_func, batched=True)
+from datasets import load_dataset, concatenate_datasets
+dataset1 = load_dataset("medalpaca/medical_meadow_medqa", split = "train")
+dataset2 = load_dataset("medalpaca/medical_meadow_wikidoc_patient_information", split = "train")
+dataset3 = load_dataset("medalpaca/medical_meadow_wikidoc", split = "train") 
+dataset4 = load_dataset("medalpaca/medical_meadow_medical_flashcards", split = "train")
+
+dataset1 = dataset1.map(formatting_prompts_func, batched = True)
+dataset2 = dataset2.map(formatting_prompts_func, batched = True)
+dataset3 = dataset3.map(formatting_prompts_func, batched = True)
+dataset4 = dataset4.map(formatting_prompts_func, batched = True)
+
+dataset_comp = concatenate_datasets([dataset1, dataset2, dataset3, dataset4])
 
 # Training-Parameter festlegen
 trainer = SFTTrainer(
