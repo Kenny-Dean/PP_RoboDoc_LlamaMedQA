@@ -2,7 +2,7 @@ from huggingface_hub import HfApi, HfFolder, Repository
 from transformers import PreTrainedTokenizerFast
 
 # Pfad zu Ihrem Modellverzeichnis
-model_directory = "."
+model_directory = "./HuggingfacePush"
 
 # Ihr Hugging Face Benutzername und der Name des Modells
 hf_username = "KennyDain"
