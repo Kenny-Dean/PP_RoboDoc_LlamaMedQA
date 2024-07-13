@@ -62,16 +62,12 @@ pass
 
 from datasets import load_dataset, concatenate_datasets
 dataset1 = load_dataset("medalpaca/medical_meadow_medqa", split = "train")
-dataset2 = load_dataset("medalpaca/medical_meadow_wikidoc_patient_information", split = "train")
-dataset3 = load_dataset("medalpaca/medical_meadow_wikidoc", split = "train") 
 dataset4 = load_dataset("medalpaca/medical_meadow_medical_flashcards", split = "train")
 
 dataset1 = dataset1.map(formatting_prompts_func, batched = True)
-dataset2 = dataset2.map(formatting_prompts_func, batched = True)
-dataset3 = dataset3.map(formatting_prompts_func, batched = True)
 dataset4 = dataset4.map(formatting_prompts_func, batched = True)
 
-dataset_comp = concatenate_datasets([dataset1, dataset2, dataset3, dataset4])
+dataset_comp = concatenate_datasets([dataset1, dataset4])
 
 # Training-Parameter festlegen
 trainer = SFTTrainer(
@@ -86,7 +82,7 @@ trainer = SFTTrainer(
         per_device_train_batch_size=2,
         gradient_accumulation_steps=4,
         warmup_steps=5,
-        num_train_epochs=9,
+        num_train_epochs=6,
         learning_rate=2e-5,
         fp16=not is_bfloat16_supported(),
         bf16=is_bfloat16_supported(),
@@ -102,5 +98,5 @@ trainer = SFTTrainer(
 # Training durchführen
 trainer_stats = trainer.train()
 
-model.save_pretrained("Llama3_8B_bnb_4bit_RoboDoc_MedQA")
-tokenizer.save_pretrained("Llama3_8B_bnb_4bit_RoboDoc_MedQA_Tokenizer")
+model.save_pretrained("unsloth_Llama3_8B_bnb_4bit_RoboDoc")
+tokenizer.save_pretrained("unsloth_Llama3_8B_bnb_4bit_RoboDoc_Tokenizer")
