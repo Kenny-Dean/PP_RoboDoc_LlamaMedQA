@@ -78,7 +78,7 @@ tokenizer.padding_side = 'right' # padding to right (otherwise SFTTrainer shows 
 trainer = SFTTrainer(
     model=model,
     tokenizer=tokenizer,
-    train_dataset=dataset,
+    train_dataset=dataset_comp,
     dataset_text_field="text",
     max_seq_length=max_seq_length,
     dataset_num_proc=2,
@@ -95,7 +95,7 @@ trainer = SFTTrainer(
         optim="adamw_8bit",
         weight_decay=0.01,
         lr_scheduler_type="linear",
-        seed=3407,
+        seed=114433,
         output_dir="outputs",
     ),
 )
@@ -103,5 +103,5 @@ trainer = SFTTrainer(
 # Training durchführen
 trainer_stats = trainer.train()
 
-model.save_pretrained("unsloth_Llama3_8B_bnb_4bit_RoboDoc")
-tokenizer.save_pretrained("unsloth_Llama3_8B_bnb_4bit_RoboDoc_Tokenizer")
+model.save_pretrained("unsloth_Llama3_8B_bnb_4bit_RoboDoc_K")
+tokenizer.save_pretrained("unsloth_Llama3_8B_bnb_4bit_RoboDoc_K_Tokenizer")
