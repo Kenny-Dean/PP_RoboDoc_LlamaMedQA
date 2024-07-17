@@ -69,6 +69,11 @@ dataset4 = dataset4.map(formatting_prompts_func, batched = True)
 
 dataset_comp = concatenate_datasets([dataset1, dataset4])
 
+# change the padding tokenizer value
+tokenizer.add_special_tokens({"pad_token": "<|reserved_special_token_0|>"})
+model.config.pad_token_id = tokenizer.pad_token_id # updating model config
+tokenizer.padding_side = 'right' # padding to right (otherwise SFTTrainer shows warning)
+
 # Training-Parameter festlegen
 trainer = SFTTrainer(
     model=model,
